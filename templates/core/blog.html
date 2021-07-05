@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% include "components/navbar.html" %}
+
+<div class="container">
+    <div class="title">
+        <h2>{{blog.title}}</h2>
+    </div>
+
+    <div class="blog-body">
+        <p>{{blog.body}}</p>
+    </div>
+
+    <div class="author">
+        {{blog.author}}
+    </div>
+    <div class="date-created">
+        <h6>
+            Created on: {{blog.date}}
+        </h6>
+    </div> 
+    
+
+    {% if user.id == blog.author.id %}
+        <div class="edit_blog">
+            <a href="{% url 'core:editBlog' slug=blog.slug %}"><button>Edit</button></a>
+        </div>
+
+        <div class="edit_blog">
+            <a href="#"><button>delete</button></a>
+        </div>
+
+    {% endif %}
+
+
+    <br><br>
+    <hr>
+    <br>
+    <form action="{% url 'core:blog_like' slug=blog.slug %}" method="POST">
+        {% csrf_token %}
+        {% if liked %}
+            <button type="submit" value="{{blog.id}}" name="blog_id" class='btn btn-primary btn-sm'>Unlike</button>
+        {% else %}
+            <button type="submit" value="{{blog.id}}" name="blog_id" class='btn btn-primary btn-sm'>Like</button>
+        {% endif %}
+    </form>
+    {{likeCount}} Likes
+</div>
+
+{% endblock content %}

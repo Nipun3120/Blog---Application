@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% include "components/navbar.html" %}
+
+<div class="container">
+    <form method="POST" >
+        <div class="container lighten-2">
+            <div class="row col s12 md4">
+                <div class="container">
+                    {% csrf_token %}
+                    {{signupForm}}
+                    <button type="submit" class="btn waves-effect waves-ligh">Login</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+{% endblock content %}

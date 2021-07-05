@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% include "components/navbar.html" %}
+
+<div class="container">
+    <div class="title">
+        <h2>{{blog.title}}</h2>
+    </div>
+    <div class="confirm-form">
+        <h46Are you sure ?</h6>
+            <form method="POST">
+                {% csrf_token %}
+                <a href="{% url 'core:delete' slug=blog.slug %}">
+                    <button type="submit">Delete</button>
+                </a>
+            </form>
+    </div>
+</div>
+
+{% endblock content %}

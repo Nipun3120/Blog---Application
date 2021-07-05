@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% include "components/navbar.html" %}
+
+    <div class="container">
+        <h2>Create blog page</h2>
+        <form method="post" class="">
+            {% csrf_token %}
+            <label for="title"> Title </label>
+            {{form.title}}
+
+            <label for="body">Body </label>
+            {{form.body}}
+            <input type="submit" value="Create" style="margin-top:30px">
+        </form>
+    </div>
+
+{% endblock content %}
+

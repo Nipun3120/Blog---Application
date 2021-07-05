@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% include "components/navbar.html" %}
+
+
+<div class="container">
+
+    {% if user.id == author_id %}
+        <h2>Create blog page</h2>
+        <form method="post" class="">
+            {% csrf_token %}
+            <label for="title"> Title </label>
+            {{form.title}}
+            <label for="body">Body </label>
+            {{form.body}}
+            <input type="submit" value="Update" style="margin-top:30px">
+        </form>
+    {% else %}  
+        <h3 class="center"> Error 404: Page not found </h3>
+    {% endif %}
+
+</div>
+
+{% endblock content %}
+
